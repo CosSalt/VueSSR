@@ -2,6 +2,9 @@ const Vue= require('vue')
 const server = require('express')()
 const renderer = require('vue-server-renderer').createRenderer()
 server.get('*',(req,res)=>{
+  var a={"Content-Type": "text/plain;charset=utf-8"};
+  res.set('Content-Type', 'text/html;charset=utf-8');
+  //res.set(a);
   const app = new Vue({
     data:{
       url: req.url
@@ -15,8 +18,9 @@ server.get('*',(req,res)=>{
     }
     res.end(`
       <!DOCTYPE html>
-      <html lang='en'>
+      <html lang='zh'>
         <head><title>Hello</title><head>
+        <meta charset='uft-8' />
         <body>${html}</body>
       </html>
     `)
